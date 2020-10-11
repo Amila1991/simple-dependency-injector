@@ -68,7 +68,7 @@ Add following dependency and plugin in your consumer project's `pom`
         </plugin>
  
  <br>
- <br>
+ 
  Define Dependency Injection(DI) Bean class using `org.cordnerds.simple.dependency.injector.annotation.Component`
 
      @Component
