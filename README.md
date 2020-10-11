@@ -35,46 +35,41 @@ Build the library using below command
 Add following dependency and plugin in your consumer project's `pom` 
 * Dependency
 
-
-    <dependency>
-        <groupId>org.cordnerds.simple.dependency.injector</groupId>
-        <artifactId>simple-dependency-injector</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
+        <dependency>
+            <groupId>org.cordnerds.simple.dependency.injector</groupId>
+            <artifactId>simple-dependency-injector</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         
- 
- 
 * Plugin
 
-
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.11</version>
-        <configuration>
-            <complianceLevel>1.8</complianceLevel>
-            <source>1.8</source>
-            <target>1.8</target>
-            <aspectLibraries>
-                <aspectLibrary>
-                    <groupId>org.cordnerds.simple.dependency.injector</groupId>
-                    <artifactId>simple-dependency-injector</artifactId>
-                </aspectLibrary>
-            </aspectLibraries>
-        </configuration>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>compile</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>aspectj-maven-plugin</artifactId>
+            <version>1.11</version>
+            <configuration>
+                <complianceLevel>1.8</complianceLevel>
+                <source>1.8</source>
+                <target>1.8</target>
+                <aspectLibraries>
+                    <aspectLibrary>
+                        <groupId>org.cordnerds.simple.dependency.injector</groupId>
+                        <artifactId>simple-dependency-injector</artifactId>
+                    </aspectLibrary>
+                </aspectLibraries>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
  
- 
+ <br>
+ <br>
  Define Dependency Injection(DI) Bean class using `org.cordnerds.simple.dependency.injector.annotation.Component`
- 
 
      @Component
      public class Test {
