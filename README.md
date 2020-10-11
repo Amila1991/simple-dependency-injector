@@ -30,7 +30,7 @@ Build the library using below command
 
 `mvn clean install`
 
-##### Step 3
+###### Step 3
 
 Add following dependency and plugin in your consumer project's `pom` 
 * Dependency
