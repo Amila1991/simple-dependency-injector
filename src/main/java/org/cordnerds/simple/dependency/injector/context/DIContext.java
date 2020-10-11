@@ -41,9 +41,7 @@ public final class DIContext implements Context {
             throw new DIInstanceCreationException("{} is not bean(component annotated)", type.getTypeName());
         }
         try {
-            Bean<T> bean = BeanFactory.buildBean(component.scope(), type.newInstance());
-            addBean(bean);
-            return bean.getInstance();
+            return type.newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new DIInstanceCreationException("Error occurring when creating {} instance ", e, type.getTypeName());
         }
