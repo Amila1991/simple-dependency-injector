@@ -2,8 +2,6 @@ package org.cordnerds.simple.dependency.injector.context;
 
 import org.cordnerds.simple.dependency.injector.model.Bean;
 
-import java.util.Optional;
-
 /**
  * @author Amila Karunathilaka
  */

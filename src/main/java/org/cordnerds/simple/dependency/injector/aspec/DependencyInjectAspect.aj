@@ -16,7 +16,8 @@ import java.lang.reflect.Modifier;
  */
 public aspect DependencyInjectAspect {
 
-    pointcut injectBean() : execution(public *..*.new(..)) && @target(org.cordnerds.simple.dependency.injector.annotation.Component);
+    pointcut injectBean() : execution(public *..*.new(..))
+        && @target(org.cordnerds.simple.dependency.injector.annotation.Component);
 
     before() : injectBean() {
         Object instance = thisJoinPoint.getThis();
@@ -31,19 +32,22 @@ public aspect DependencyInjectAspect {
         Object instance = thisJoinPoint.getThis();
         Class<?> clzz = instance.getClass();
         Context context = DIContext.getContext();
-        DIUtils.filterStaticAndFinalField(clzz).filter(field -> field.isAnnotationPresent(Inject.class)).forEach(field -> {
-            Class<?> type = field.getType();
-            Object bean = context.getBean(type);
-            if (bean != null) {
-                if (!Modifier.isPublic(field.getModifiers())) {
-                    field.setAccessible(true);
-                }
-                try {
-                    field.set(instance, bean);
-                } catch (IllegalAccessException e) {
-                    throw new DIInstanceCreationException("Error occurring while injecting DI bean : {}", e, clzz.getTypeName());
-                }
-            }
-        });
+        DIUtils.filterStaticAndFinalField(clzz)
+                .filter(field -> field.isAnnotationPresent(Inject.class))
+                .forEach(field -> {
+                    Class<?> type = field.getType();
+                    Object bean = context.getBean(type);
+                    if (bean != null) {
+                        if (!Modifier.isPublic(field.getModifiers())) {
+                            field.setAccessible(true);
+                        }
+                        try {
+                            field.set(instance, bean);
+                        } catch (IllegalAccessException e) {
+                            throw new DIInstanceCreationException("Error occurring while injecting DI bean : {}",
+                                    e, clzz.getTypeName());
+                        }
+                    }
+                });
     }
 }
