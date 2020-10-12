@@ -1,10 +1,7 @@
 package org.cordnerds.simple.dependency.injector.context;
 
 import org.cordnerds.simple.dependency.injector.exception.DIInstanceCreationException;
-import org.cordnerds.simple.dependency.injector.mock.insatnce.MockComponent;
-import org.cordnerds.simple.dependency.injector.mock.insatnce.MockInnerPrototypeComponent;
-import org.cordnerds.simple.dependency.injector.mock.insatnce.MockInnerSingletonComponent;
-import org.cordnerds.simple.dependency.injector.mock.insatnce.MockNonComponent;
+import org.cordnerds.simple.dependency.injector.mock.insatnce.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -35,5 +32,11 @@ public class DIContextTest {
     public void getBeanTestFailureWithNonComponent() {
         Context context = DIContext.getContext();
         context.getBean(MockNonComponent.class);
+    }
+
+    @Test(expected = DIInstanceCreationException.class)
+    public void getBeanTestFailureWithArgumentsConstructorComponent() {
+        Context context = DIContext.getContext();
+        context.getBean(MockArgsConstructorComponent.class);
     }
 }
